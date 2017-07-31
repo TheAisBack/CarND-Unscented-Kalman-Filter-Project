@@ -47,7 +47,7 @@ UKF::UKF() {
   // Setting up lambda
   lambda_  = 3 - n_aug_;
   // initializing sign
-  int n_sig_ = 2 * n_aug_ + 1;
+  int const n_sig_ = 2 * n_aug_ + 1;
   // setting weights
   weights_ = VectorXd(n_sig_);
   double weight_0 = lambda_/(lambda_ + n_aug_);
@@ -99,7 +99,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
   measurement and this one. 
 */
 void UKF::Prediction(double delta_t) {
-  int n_sig_ = 2 * n_aug_ + 1;
+  int const n_sig_ = 2 * n_aug_ + 1;
   VectorXd x_aug = VectorXd(n_aug_);
   MatrixXd P_aug = MatrixXd(n_aug_, n_aug_);
   MatrixXd Xsig_aug = MatrixXd(n_aug_, n_sig_);
@@ -177,7 +177,7 @@ void UKF::Prediction(double delta_t) {
 void UKF::UpdateLidar(MeasurementPackage meas_package) {
   double NIS_laser = 0.0;
   int n_z = 2;
-  int n_sig_ = 2 * n_aug_ + 1;
+  int const n_sig_ = 2 * n_aug_ + 1;
   VectorXd z = VectorXd(n_z);
   // transform sigma points into measurement space
   MatrixXd Zsig = Xsig_pred_.block(0, 0, n_z, 2 * n_aug_ + 1);
