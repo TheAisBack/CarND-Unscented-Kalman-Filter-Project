@@ -72,11 +72,11 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
       x_ << meas_package.raw_measurements_[0], meas_package.raw_measurements_[1],0,0,0;
     } else if (meas_package.sensor_type_ == MeasurementPackage::RADAR) {
       float ro = meas_package.raw_measurements_[0];
-      float theta = meas_package.raw_measurements_[1];
-      float x = ro * cos(theta);
-      float y = ro * sin(theta);
-      x_(0) = x;
-      x_(1) = y;
+      float psi = meas_package.raw_measurements_[1];
+      float ro_dot = meas_package.raw_measurements_[2]; 
+      float x = ro * cos(psi);
+      float y = ro * sin(psi);
+      x_ << ro, psi, ro_dot, x, y;
     }
     //Initialize anything else here (e.g. P_, anything else needed)
     time_us_ = meas_package.timestamp_;
