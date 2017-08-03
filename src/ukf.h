@@ -67,17 +67,15 @@ public:
   //set up for Xsig_aug
   MatrixXd Xsig_aug;
   //Setting rho
-  double rho;
+  float rho;
   //Setting psi
-  double psi;
-  //Setting px
-  double px;
-  //Setting py
-  double py;
-  //Setting vel
-  double vel;
-  //Setting psi_dot
-  double psi_dot;
+  float psi;
+  // Setting rho_dot
+  float rho_dot;
+  //setting px
+  float px;
+  //setting py
+  float py;
   /**
    * Constructor
    */
